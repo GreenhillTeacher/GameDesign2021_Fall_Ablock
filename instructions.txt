@@ -1,0 +1,8 @@
+These are the instructions: 
+    use the arrow keys to move the rectangle 
+    use the awsd keys to move the circle
+The idea of the game is: 
+    for the circle to eat the rectangle, 
+    for the rectangle to get away from the circle
+Game will end when the circle get the rectangle 3 times
+or the rectangle last 1 min alive
