@@ -51,7 +51,8 @@ MENU_FONT=pygame.font.SysFont('comicsans', 40)
 INSTRUCTIONS_FONT=pygame.font.SysFont('comicsans', 30)
 text= TITLE_FONT.render('message',1,BLACK)
 #New window title
-
+#images
+bg1 = pygame.image.load('bgSmaller.jpg')
 #Function to print Titles to all screens
 def display_Title(message,ym):
     pygame.time.delay(100)
@@ -194,6 +195,12 @@ def Screen_size():
         pygame.display.flip()
         pygame.time.delay(100)
         xm +=200
+def game_Level1():
+    win.blit(bg1, (0,0))
+    pygame.display.set_caption("My game 1")
+    pygame.display.flip()
+    #add your game logic here
+
 # def Color_screen():
 #     for key in colors:
 #Start Program
@@ -270,10 +277,12 @@ while run:
                     OBJECTCOLOR = False
             if LEVEL1:
                 #play game here
+                game_Level1()
                 if xm >335 and xm<460 and ym>745 and ym<795:
                     Menu_Back()
                     MAINMENU = True
                     LEVEL1 = False
+                pygame.display.flip()
             if LEVEL2:
                 #Play game
                 if xm >335 and xm<460 and ym>745 and ym<795:

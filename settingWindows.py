@@ -18,6 +18,11 @@ win.fill(colors.get('white'))
 TITLE_FONT=py.font.SysFont("comicsans", 80)
 WORDS_FONT=py.font.SysFont('comicsana',40)
 text=TITLE_FONT.render("message", 1, BLACK)
+
+#Images
+bg1 = pygame.image.load('bgSmaller.jpg')
+
+
 def display_Title(message, x,y):
     py.time.delay(100)
     text=TITLE_FONT.render(message, 1, BLACK)
