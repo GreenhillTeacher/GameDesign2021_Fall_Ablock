@@ -5,7 +5,7 @@
 
 import os,random,time, pygame as py, sys, math
 import pygame, os,random,time
-
+ipygwi
 from pygame import color
 os.system('cls')
 pygame.init()

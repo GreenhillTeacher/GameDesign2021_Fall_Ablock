@@ -11,6 +11,8 @@ colors = {'red':(150,0,0),'green':(0,200,0), 'blue':(0,0,255), 'purple':(150, 0,
 messages=["ScreenSize", "Background Color", "Object Color", "Sounds On/Off"]
 WIDTH=700
 HEIGHT=700
+rt=random.choice(list(colors))
+
 BLACK=colors.get('black')
 WHITE=colors.get('white')
 PURPLE=colors.get('purple')
@@ -47,6 +49,7 @@ def display_Menu():
         py.time.delay(100)
         y += 100
         square.y=y
+WHITE=colors.get(rt)
 win.fill(WHITE)
 display_Title("Settings",WIDTH/2-text.get_width()/2, 70)
 py.time.delay(200)

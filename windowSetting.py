@@ -55,12 +55,12 @@ text= TITLE_FONT.render('message',1,BLACK)
 bg1 = pygame.image.load('bgSmaller.jpg')
 #Function to print Titles to all screens
 def display_Title(message,ym):
-    pygame.time.delay(100)
+    pygame.time.delay(10)
     text= TITLE_FONT.render(message,1,BLACK)
     xm=WIDTH/2-text.get_width()/2
     win.blit(text, (xm,ym))
     pygame.display.update()
-    pygame.time.delay(100)
+    pygame.time.delay(10)
 
 #Function to print all the menus 
 def Menu_function(line):
@@ -75,7 +75,7 @@ def Menu_function(line):
         win.blit(text,(xm,ym))
         pygame.display.flip()
         pygame.time.delay(100)
-        ym +=100
+        ym +=HEIGHT/10
         square.y=ym
     
 def MainMenuWin(xm,ym):
@@ -206,7 +206,9 @@ def game_Level1():
 #Start Program
 display_Title("MENU", 40)
 Menu_function(mainMenu)
-run=True 
+run=True
+xm=0
+ym=0
 # C:\Users\suarezm\OneDrive - Greenhill School\Game Design\GameDesign2021_Fall_Ablock\cade.py  
 while run:
     for eve in pygame.event.get():
@@ -215,77 +217,79 @@ while run:
     mouse_pos=(0,0)
     if eve.type==pygame.MOUSEBUTTONDOWN:
         mouse_pressed=pygame.mouse.get_pressed()
-        if mouse_pressed[0]:
+        if mouse_pressed:
             mouse_pos=pygame.mouse.get_pos()
             print(pygame.mouse.get_pos())
             xm=mouse_pos[0]
             ym=mouse_pos[1]
-            if MAINMENU:
-                MainMenuWin(xm,ym)
-            if INSTRUCTIONS:
-                myFile=open('instructions.txt', 'r')
-                yi=150
-                for line in myFile.readlines():
-                    text=INSTRUCTIONS_FONT.render(line, 1, BLACK)
-                    win.blit(text, (40,yi))
-                    pygame.display.update()
-                    pygame.time.delay(100)
-                    yi+=50
-                myFile.close()
-                if xm >335 and xm<460 and ym>745 and ym<795:
-                    Menu_Back()
-                    MAINMENU = True
-                    INSTRUCTIONS = False
-            if SETTINGS:
-                SettingMenuWin(xm,ym)
-                flag=True
-                if xm >335 and xm<460 and ym>HEIGHT-50 and ym<HEIGHT:
-                    Menu_Back()
-                    MAINMENU = True
-                    SETTINGS = False
-                    flag=False
-            if SCREEN:
-                Screen_size()
-                display_Title("Back", HEIGHT-50)
-                pygame.display.update()
-                if xm>450 and xm <540 and ym>200 and ym<290: 
-                    WIDTH=600
-                    HEIGHT=600
-                    win=pygame.display.set_mode((WIDTH,HEIGHT))
-                    win.fill(COLOR)
-                    Screen_size()
-                    display_Title("Back", HEIGHT-50)
-
-                    pygame.display.update()
-                if xm >335 and xm<460 and ym>HEIGHT-50 and ym<HEIGHT:
-                    Setting_Back()
-                    SETTINGS = True
-                    SCREEN = False
-                if xm >335 and xm<460 and ym>745 and ym<795:
-                    Setting_Back()
-                    SETTINGS = True
-                    SCREEN = False
-            if BACKGROUND:
-                if xm >335 and xm<460 and ym>HEIGHT-50 and ym<HEIGHT:
-                    Setting_Back()
-                    SETTINGS = True
-                    BACKGROUND = False
-            if OBJECTCOLOR:
-                if xm >335 and xm<460 and ym>745 and ym<795:
-                    Setting_Back()
-                    SETTINGS = True
-                    OBJECTCOLOR = False
-            if LEVEL1:
-                #play game here
-                game_Level1()
-                if xm >335 and xm<460 and ym>745 and ym<795:
-                    Menu_Back()
-                    MAINMENU = True
-                    LEVEL1 = False
-                pygame.display.flip()
-            if LEVEL2:
-                #Play game
-                if xm >335 and xm<460 and ym>745 and ym<795:
-                    Menu_Back()
-                    MAINMENU = True
-                    LEVEL2 = False
+    if MAINMENU:
+        MainMenuWin(xm,ym)
+    if INSTRUCTIONS:
+       
+        myFile=open('instructions.txt', 'r')
+        yi=150
+        for line in myFile.readlines():
+            text=INSTRUCTIONS_FONT.render(line, 1, BLACK)
+            win.blit(text, (40,yi))
+            pygame.display.update()
+            pygame.time.delay(50)
+            yi+=50
+        myFile.close()
+        display_Title("Back", HEIGHT-100)
+        print(xm,ym)
+        if xm >320 and xm<490 and ym>HEIGHT-200 and ym<HEIGHT:
+            MAINMENU = True
+            INSTRUCTIONS = False
+            #Menu_Back()
+    if SETTINGS:
+        SettingMenuWin(xm,ym)
+        flag=True
+        if xm >335 and xm<460 and ym>HEIGHT-50 and ym<HEIGHT:
+            Menu_Back()
+            MAINMENU = True
+            SETTINGS = False
+            flag=False
+    if SCREEN:
+        Screen_size()
+        display_Title("Back", HEIGHT-50)
+        pygame.display.update()
+        if xm>450 and xm <540 and ym>200 and ym<290: 
+            WIDTH=600
+            HEIGHT=600
+            win=pygame.display.set_mode((WIDTH,HEIGHT))
+            win.fill(COLOR)
+            Screen_size()
+            display_Title("Back", HEIGHT-100)
+            pygame.display.update()
+        if xm >335 and xm<460 and ym>HEIGHT-100 and ym<HEIGHT:
+            Setting_Back()
+            SETTINGS = True
+            SCREEN = False
+        if xm >335 and xm<460 and ym>745 and ym<795:
+            Setting_Back()
+            SETTINGS = True
+            SCREEN = False
+    if BACKGROUND:
+        if xm >335 and xm<460 and ym>HEIGHT-50 and ym<HEIGHT:
+            Setting_Back()
+            SETTINGS = True
+            BACKGROUND = False
+    if OBJECTCOLOR:
+        if xm >335 and xm<460 and ym>745 and ym<795:
+            Setting_Back()
+            SETTINGS = True
+            OBJECTCOLOR = False
+    if LEVEL1:
+        #play game here
+        game_Level1()
+        if xm >335 and xm<460 and ym>745 and ym<795:
+            Menu_Back()
+            MAINMENU = True
+            LEVEL1 = False
+        pygame.display.flip()
+    if LEVEL2:
+        #Play game
+        if xm >335 and xm<460 and ym>745 and ym<795:
+            Menu_Back()
+            MAINMENU = True
+            LEVEL2 = False
